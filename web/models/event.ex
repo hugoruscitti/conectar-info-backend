@@ -13,7 +13,7 @@ defmodule ConectarInfoBackend.Event do
     timestamps
   end
 
-  @required_fields ~w(ip os os_version last_update lat lon date)
+  @required_fields ~w(os os_version last_update)
   @optional_fields ~w()
 
   @doc """
