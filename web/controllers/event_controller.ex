@@ -12,15 +12,19 @@ defmodule ConectarInfoBackend.EventController do
 
   def create(conn, %{"event" => event_params}) do
     changeset = Event.changeset(%Event{}, event_params)
-    [{"host", ip}|_] = conn.req_headers
+    ip = conn.remote_ip |> Tuple.to_list |> (Enum.join ".")
 
-
+    changeset = Ecto.Changeset.put_change(changeset, :ip, ip)
     IO.puts "Se conecta desde " <> ip
+
+    # Usar un request similar a este cuando
+    # se necesite geo posicionar:
+    #
+    #               http://freegeoip.net/json/201.216.201.129
+    #
 
     #require IEx
     #IEx.pry
-
-    #value = {:some, :erlang, :value}
 
     case Repo.insert(changeset) do
       {:ok, event} ->
