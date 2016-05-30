@@ -15,6 +15,8 @@ defmodule ConectarInfoBackend.EventController do
     ip = conn.remote_ip |> Tuple.to_list |> (Enum.join ".")
 
     changeset = Ecto.Changeset.put_change(changeset, :ip, ip)
+    changeset = Ecto.Changeset.put_change(changeset, :date, Ecto.DateTime.utc())
+
     IO.puts "Se conecta desde " <> ip
 
     # Usar un request similar a este cuando

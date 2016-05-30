@@ -8,7 +8,7 @@ defmodule ConectarInfoBackend.Event do
     field :last_update, Ecto.Date
     field :lat, :float
     field :lon, :float
-    field :date, Ecto.Date
+    field :date, Ecto.DateTime
 
     timestamps
   end
