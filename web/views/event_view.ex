@@ -2,7 +2,7 @@ defmodule ConectarInfoBackend.EventView do
   use ConectarInfoBackend.Web, :view
 
   def render("index.json", %{events: events}) do
-    %{data: render_many(events, ConectarInfoBackend.EventView, "event.json")}
+    %{events: render_many(events, ConectarInfoBackend.EventView, "event.json")}
   end
 
   def render("show.json", %{event: event}) do

@@ -5,6 +5,10 @@
 # is restricted to this project.
 use Mix.Config
 
+config :plug, :mimes, %{  
+  "application/vnd.api+json" => ["json-api"]
+  }
+
 # Configures the endpoint
 config :conectar_info_backend, ConectarInfoBackend.Endpoint,
   url: [host: "localhost"],

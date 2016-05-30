@@ -22,6 +22,7 @@ defmodule ConectarInfoBackend.Endpoint do
   plug Plug.RequestId
   plug Plug.Logger
 
+
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
@@ -35,5 +36,6 @@ defmodule ConectarInfoBackend.Endpoint do
     key: "_conectar_info_backend_key",
     signing_salt: "/YANOq6y"
 
+  plug Corsica, origins: "*"
   plug ConectarInfoBackend.Router
 end

@@ -37,6 +37,7 @@ defmodule ConectarInfoBackend.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
+     {:corsica, "~> 0.4"},
      {:jsonapi, "> 0.0.2"}
    ]
   end
