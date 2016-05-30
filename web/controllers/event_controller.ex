@@ -12,6 +12,15 @@ defmodule ConectarInfoBackend.EventController do
 
   def create(conn, %{"event" => event_params}) do
     changeset = Event.changeset(%Event{}, event_params)
+    [{"host", ip}|_] = conn.req_headers
+
+
+    IO.puts "Se conecta desde " <> ip
+
+    #require IEx
+    #IEx.pry
+
+    #value = {:some, :erlang, :value}
 
     case Repo.insert(changeset) do
       {:ok, event} ->

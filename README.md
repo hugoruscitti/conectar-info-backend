@@ -48,5 +48,26 @@ es un ejemplo de llamada válida:
 
 
 ```
-curl -H "Content-Type: application/json" -X POST -d '{"event": {"ip":"??", "os": "huayra", "os_version": "3.2", "lon": 1233.3, "lat": 333.3, "last_update": "2012-04-23", "date": "2010-10-10"}}' http://localhost:4000/api/events
+curl -H "Content-Type: application/json" -X POST -d '{"event": {"os": "huayra", "os_version": "3.2", "last_update": "2012-04-23"}}' http://localhost:4000/api/events
+```
+
+Es decir, los campos `ip`, `lat`, `lon` y `date` se omiten, porque los
+calcula el mismo backend a partir de los datos del request, y se pueden
+corroborar porque el backend los devuelve procesados, tal y como los grabará
+en la base de datos.
+
+# Depuración
+
+Para depurar la aplicación en desarrollo podrías lanzar el servidor
+de phoenix así:
+
+```
+iex -S mix phoenix.server
+```
+
+y en la sección de código que quieras depurar agregá:
+
+```
+require IEx
+IEx.pry
 ```
