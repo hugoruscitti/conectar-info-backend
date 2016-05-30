@@ -11,6 +11,7 @@ defmodule ConectarInfoBackend.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
   end
 
   scope "/", ConectarInfoBackend do
@@ -20,7 +21,9 @@ defmodule ConectarInfoBackend.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ConectarInfoBackend do
-  #   pipe_through :api
-  # end
+  scope "/api", ConectarInfoBackend do
+    pipe_through :api
+
+    resources "/events", EventController, except: [:new, :edit]
+  end
 end
