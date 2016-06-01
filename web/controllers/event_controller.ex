@@ -8,6 +8,7 @@ defmodule ConectarInfoBackend.EventController do
   def index(conn, _params) do
     query = from p in Event,
             order_by: [desc: p.date]
+
     events = Repo.all(query)
     render(conn, "index.json", events: events)
   end
