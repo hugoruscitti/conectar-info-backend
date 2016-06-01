@@ -6,7 +6,9 @@ defmodule ConectarInfoBackend.EventController do
   plug :scrub_params, "event" when action in [:create, :update]
 
   def index(conn, _params) do
-    events = Repo.all(Event)
+    query = from p in Event,
+            order_by: [desc: p.date]
+    events = Repo.all(query)
     render(conn, "index.json", events: events)
   end
 
